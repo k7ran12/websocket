@@ -47,6 +47,10 @@ io.on('connection', async (socket) => {
         io.emit('message', msgObj);
     });
 
+    socket.on('typing', (data) => {
+        socket.broadcast.emit('typing', data);
+    });
+
     // Manejar desconexiones
     socket.on('disconnect', () => {
         console.log('Cliente desconectado');
